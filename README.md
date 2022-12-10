@@ -24,4 +24,4 @@ To implement data visualizations for comparison & analysis of CAP data in the da
 ***
 
 ### Portal & Dashboard Demo
-[Data Dashboard - Staging Domain]('https://reportdemo.webflow.io/interactive-data')
+[Preview the Data Dashboard here](https://reportdemo.webflow.io/interactive-data 'Staging Domain')
