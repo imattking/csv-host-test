@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+#cap-table {
+   width: 525px;
+   border-collapse: collapse;
+}
+td {
+  height: 25px;
+  padding: 5px 0px 5px 10px;
+  margin: 0;
+}
+td {
+    border: 0.5px solid black;
+}
+
+
+/************** Simple Table Setup *******************/
+/******************************************************/
+
+table[type="simple"] tr:first-child {
+    background: rgb(63,102,118);
+    color: rgb(255,255,255);
+}
+table[type="simple"] tr:nth-child(2n) {
+  background: rgb(237,237,237);
+}
+
+/************** Complex Table Setup *******************/
+/******************************************************/
+table[type="complex"] tr:first-child {
+    background: rgb(0,0,0);
+    color: rgb(255,255,255);
+}
+table[type="complex"] tr:nth-child(2n) {
+  background: rgb(237,237,237);
+}
