@@ -7,47 +7,33 @@ window.addEventListener('load', getFetch);
 simpleStyleButton.addEventListener('click', () => table.setAttribute('type', 'simple'));
 complexStyleButton.addEventListener('click', () => table.setAttribute('type', 'complex'));
 
+
 /******************** Write with Promise ********************/
 function getFetch() {
     console.log('function loaded');
     
-    // set up for different levels table csv/table complexity in CMS
-    const tableType = 'simple';
-    let csvURL = ""
-    if (tableType === 'simple') {
-        csvURL = 'https://uploads-ssl.webflow.com/6155e0c2fe4ef5f637f9f979/639108fd2383c4ed63830b1f_can-tho-top-10-litter-items.csv';
-    } else if (tableType === 'complex') {
-        csvURL = 'https://uploads-ssl.webflow.com/6155e0c2fe4ef5f637f9f979/639789213d789b740e14479d_can-tho-source-to-store.csv';
-    }
+    // set up for different levels table csv/table complexity in CMS relative to table type
+    const tableType = 'litter-density';
+    let csvURL = '';
 
-    
+    if (tableType === 'stakeholder') {
+        csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/6397970979fcf80bb213c125_2-stakeholders.csv';
+    } else if (tableType === 'litter-density') {
+        csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/6398d661c11e2c8148b3814f_9-litter-densities.csv';
+    } else if (tableType === 'source-to-store') {
+        csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/639796f1c84ce04109ce2269_1-source-to-store.csv';
+    } else {
+        //do nothing
+    }
     fetch(csvURL)
         .then(res => res.text())
         .then(data => {
-                    //console.log(data);
-            // split csv into comma separated rows w/line break as delimiter
-            const rowStrings = data.split('\n')//.join();
-                    //console.table(rowStrings);
-            // iterate through strings and replace last comma with hypen
-            
-            // split each row into an array of individual data points with hypen as delimeter
-            const rowsArray = rowStrings.map(e => {
-                console.log(e.lastIndexOf(','));
-                const pos = e.lastIndexOf(',');
-                // replace last comma with hypen
-                const csvString = e.slice(0, pos);
-                const numString = e.slice(pos+1);
-                const newString = csvString + '-' + numString;
-                // split string into array using hyphen is delimiter
-                return newString.split('-')
-            })
-            console.table(rowsArray);
-
+            console.log(data);
             //conditional check for url - REMOVE LATER
-            if (tableType === 'simple') {
+            if (tableType === 'litter-density' || tableType === 'stakeholder') {
                 // iterate through data and fill 2 column table
-                fillSimpleTable(rowsArray);
-            } else if (tableType === 'complex') {
+                fillTwoColumnTable(data);
+            } else if (tableType === 'source-to-store') {
                 // itreate through data and fill 9 column table
                 fillComplexTable(rowsArray);
             }
@@ -56,8 +42,24 @@ function getFetch() {
 };
 
 /******************* Populate Table w/Data ************************/
-function fillSimpleTable(data) {
-    for(let e of data) {
+function fillTwoColumnTable(data) {
+    const rowStrings = data.split('\n')
+    console.log(rowStrings);
+    // iterate through strings and replace last comma with hypen
+    // split each row into an array of individual data points with hypen as delimeter
+    const rowsArray = rowStrings.map(e => {
+        console.log(e.lastIndexOf(','));
+        const pos = e.lastIndexOf(',');
+        // replace last comma with hypen
+        const csvString = e.slice(0, pos);
+        const numString = e.slice(pos+1);
+        const newString = csvString + '-' + numString;
+        // split string into array using hyphen is delimiter
+        return newString.split('-')
+    })
+    console.table(rowsArray);
+    // loop through
+    for(let e of rowsArray) {
         //set up table rows and cells
         const tableRef = document.querySelector('#cap-table');
         const newRow = tableRef.insertRow(-1);
