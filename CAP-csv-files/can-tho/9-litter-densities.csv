@@ -1,9 +1,5 @@
-Population Tertile,"Litter Density
- (count/m2)"
-"Lower
-(5 – 916 persons/ sq km)",1.29
-"Middle
-(916 – 2,225 persons/ sq km)",0.75
-"Upper
-(2,225 – 45,599 persons/sq km)",0.95
+Population Tertile,Litter Density (count/m2)
+Lower (5 – 916 persons/ sq km),1.29
+"Middle (916 – 2,225 persons/ sq km)",0.75
+"Upper (2,225 – 45,599 persons/sq km)",0.95
 City Average,1
