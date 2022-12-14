@@ -2,18 +2,31 @@
     box-sizing: border-box;
     font-family: sans-serif;
   }
-#cap-table {
+  body {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+.cap-table {
    width: 525px;
    border-collapse: collapse;
 }
+h1 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+table {
+  margin-bottom: 30px;
+}
 td {
   height: 25px;
-  padding: 5px 0px 5px 10px;
+  padding: 5px 5px 5px 10px;
   margin: 0;
+  border: 0.5px solid black;
 }
-td {
-    border: 0.5px solid black;
-}
+
 
 
 /************** Simple Table Setup *******************/
@@ -30,9 +43,32 @@ table[type="simple"] tr:nth-child(2n) {
 /************** Complex Table Setup *******************/
 /******************************************************/
 table[type="complex"] tr:first-child {
-    background: rgb(0,0,0);
+    background: rgb(63,102,118);
     color: rgb(255,255,255);
+    height: 50px;
 }
-table[type="complex"] tr:nth-child(2n) {
+table[type="complex"] tr:nth-child(2){
+  background: rgb(75,169,185);
+  color: rgb(255,255,255);
+  height: 50px;
+}
+table[type="complex"] tr:nth-child(2n+3) {
   background: rgb(237,237,237);
+}
+table[type="complex"] tr:first-child td:first-child {
+  background: rgb(255,255,255);
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+}
+table[type="complex"] tr:nth-child(2) td:first-child {
+  background: rgb(255,255,255);
+  border-left: none;
+  border-top: none;
+}
+table[type="complex"] tr:first-child td:nth-child(2) {
+  column-span: all;
+}
+table[type="complex"] tr:first-child td:nth-child(3) {
+  column-span: all;
 }
