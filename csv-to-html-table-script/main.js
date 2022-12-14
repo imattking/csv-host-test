@@ -1,41 +1,38 @@
 const answer = document.querySelector('#result');
-const simpleStyleButton = document.querySelector('#simple-button');
-const complexStyleButton = document.querySelector('#complex-button')
-const table = document.querySelector('#cap-table');
 
-window.addEventListener('load', getFetch);
-simpleStyleButton.addEventListener('click', () => table.setAttribute('type', 'simple'));
-complexStyleButton.addEventListener('click', () => table.setAttribute('type', 'complex'));
+window.addEventListener('load', getFetch('source-to-store'));
+window.addEventListener('load', getFetch('stakeholder'));
+
 
 
 /******************** Write with Promise ********************/
-function getFetch() {
+function getFetch(type) {
     console.log('function loaded');
     
     // set up for different levels table csv/table complexity in CMS relative to table type
-    const tableType = 'litter-density';
+    const tableType = type;
     let csvURL = '';
 
     if (tableType === 'stakeholder') {
         csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/6397970979fcf80bb213c125_2-stakeholders.csv';
     } else if (tableType === 'litter-density') {
-        csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/6398d661c11e2c8148b3814f_9-litter-densities.csv';
+        csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/63990ae6169b53f3286c16e9_9-litter-densities.csv';
     } else if (tableType === 'source-to-store') {
-        csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/639796f1c84ce04109ce2269_1-source-to-store.csv';
+        csvURL = 'https://uploads-ssl.webflow.com/6231f855efbbfbc60052053d/639917184a2dbf1e0c3f4645_1-source-to-store.csv';
     } else {
         //do nothing
     }
     fetch(csvURL)
         .then(res => res.text())
         .then(data => {
-            console.log(data);
+            //console.log(data);
             //conditional check for url - REMOVE LATER
             if (tableType === 'litter-density' || tableType === 'stakeholder') {
                 // iterate through data and fill 2 column table
                 fillTwoColumnTable(data);
             } else if (tableType === 'source-to-store') {
                 // itreate through data and fill 9 column table
-                fillComplexTable(rowsArray);
+                fillMultipleColumnTable(data);
             }
         })
         .catch(err => console.log(err))
@@ -44,7 +41,6 @@ function getFetch() {
 /******************* Populate Table w/Data ************************/
 function fillTwoColumnTable(data) {
     const rowStrings = data.split('\n')
-    console.log(rowStrings);
     // iterate through strings and replace last comma with hypen
     // split each row into an array of individual data points with hypen as delimeter
     const rowsArray = rowStrings.map(e => {
@@ -61,7 +57,7 @@ function fillTwoColumnTable(data) {
     // loop through
     for(let e of rowsArray) {
         //set up table rows and cells
-        const tableRef = document.querySelector('#cap-table');
+        const tableRef = document.querySelector('#simple.cap-table');
         const newRow = tableRef.insertRow(-1);
         const newMaterialCell = newRow.insertCell(0);
         const newValueCell = newRow.insertCell(1);
@@ -76,20 +72,35 @@ function fillTwoColumnTable(data) {
         };
 }
 
-function fillComplexTable(data) {
-    for(let e of data) {
-        //set up table rows and cells
-        const tableRef = document.querySelector('#cap-table');
-        const newRow = tableRef.insertRow(-1);
-        for(let i = 0; i < data.length; i ++) {
-            const newCell = newRow.insertCell(i);
+function fillMultipleColumnTable(data) {
+    // split into rows array using line return as delimiter
+    const rowStrings = data.split('\n')//.join('');
+    console.table(rowStrings);
+    const rowsArray = rowStrings.map(e => e.split(','))
+    //clean out first set of empty cells in first row
+    rowsArray[0].splice(2,3);
+    //clean out second set of empty cells in second row
+    rowsArray[0].splice(3,3);
+    console.table(rowsArray[0]);
+    const tableRef = document.querySelector('#complex.cap-table');
+    // iterate through row arrays to populate table
+    for(let e of rowsArray) {
+    //for (let i = 0; i < rowsArray.length; i++) {
+    const newRow = tableRef.insertRow(-1);
+        for(let i = 0; i < e.length; i++) {
+            const newCell = newRow.insertCell(-1);
             // set value of cells based on element index in array
             const cellText = document.createTextNode(e[i]);
             // append cell values as children to each row
             newCell.appendChild(cellText);
-        };
-    };
-};
+        }
+    }
+    /******* Replace data & build colspan for top header row *******/
+    const tableAdjust = document.querySelector('#complex.cap-table')
+    const rowOne = tableAdjust.rows[0];
+    rowOne.innerHTML = `<tr><td></td><td colspan="4">Distance Store to Parent Company (km)</td><td colspan="4">Distance Store to Manufacturer (km)</td><tr>`;
+    console.log(rowOne);
+}
 
 
 /************* Alternate option to Write Fetch as an Async function *************/
