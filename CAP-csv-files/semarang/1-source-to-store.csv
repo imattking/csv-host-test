@@ -1,7 +1,6 @@
-,Distance Store to Parent Company (km),,,,Distance Store to Manufacturer (km),,,
-,Minimum,Maximum,Average,Median,Minimum,Maximum,Average,Median
-Beverages,199,"25,609","13,359","12,550",152,"5,380","1,205",244
-Candy,0,"25,609","6,276","2,139",0,"3,657",559,290
-Chips,199,"23,269","8,734","1,844",199,416,272,290
-Tobacco Products,279,"12,965","8,736","12,964",198,279,225,198
-Personal Care Products,199,"12,965","12,965","12,964",199,290,260,290
+ ,Distance Store to Parent Company (km), , , ,Distance Store to Manufacturer (km), , , 
+ ,Minimum,Maximum,Average,Median,Minimum,Maximum,Average,Median
+Beverages,195,12470,4227,243,103,2388,548,198
+Candy,178,26753,13904,13045,178,5213,2625,2316
+Chips,0,26753,7519,1252,0,667,162,97
+Tobacco Products,12514,14035,13275,13275,1839,3488,2663,2663
