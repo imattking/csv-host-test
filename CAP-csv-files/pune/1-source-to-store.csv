@@ -1,0 +1,6 @@
+ ,Distance Store to Parent Company (km), , , ,Distance Store to Manufacturer (km), , , 
+ ,Minimum,Maximum,Average,Median,Minimum,Maximum,Average,Median
+Beverages,0.23,1686,1112,1526,0.23,1680,540,693
+Candy,69.47,1553,519,467,0.23,2188,719,528
+Chips,0.23,1608,856,715,0.23,1764,293,52
+Tobacco Products,69,5052,1829,1588,136,5052,1874,1605
