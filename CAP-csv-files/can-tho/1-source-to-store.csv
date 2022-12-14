@@ -1,5 +1,5 @@
-,Distance Store to Parent Company (km),,,,Distance Store to Manufacturer (km),,,
-,Minimum,Maximum,Average,Median,Minimum,Maximum,Average,Median
+ ,Distance Store to Parent Company (km), , , ,Distance Store to Manufacturer (km), , , 
+ ,Minimum,Maximum,Average,Median,Minimum,Maximum,Average,Median
 Beverages,199,25609,13359,12550,152,5380,1205,244
 Candy,0,25609,6276,2139,0,3657,559,290
 Chips,199,23269,8734,1844,199,416,272,290
