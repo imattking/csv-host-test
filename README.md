@@ -6,7 +6,7 @@ Re: Circularity Assessment Protocol(CAP) Reports
 ### Purpose :
 To implement data visualizations for comparison & analysis of CAP data in the dashbaord of an online portal to be shared with clients & the scientific community
 
-[Preview the Data Dashboard here](https://reportdemo.webflow.io/interactive-data 'Staging Domain')
+<a href="https://reportdemo.webflow.io/interactive-data" target="_blank">Preview the Data Dashboard here</a>
 
 ![Dashboard Preview 1](https://raw.githubusercontent.com/imattking/UGA-CAP-CIL-custom-csv-scripts/main/assets/images/CAP-Dashboard-Preview-1.png)
 ![Dashboard Preview 2](https://raw.githubusercontent.com/imattking/UGA-CAP-CIL-custom-csv-scripts/main/assets/images/CAP-Dashboard-Preview-2.png)
