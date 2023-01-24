@@ -24,4 +24,4 @@ To implement data visualizations for comparison & analysis of CAP data in the da
 - Render results in the DOM dynamically as each of the datasets in question is pulled from the CMS
 
 #### Phase III : 
-- Integrate both types of data visulations into a dynmic search & filtering interface with active tagging enabled
+- Integrate both types of data visulations into a dynamic search & filtering interface with active tagging enabled
